@@ -10,6 +10,7 @@ import ParkingStatus from "./pages/ParkingStatus";
 import PurchasePermit from "./pages/PurchasePermit";
 import AdminDashboard from "./pages/AdminDashboard";
 import Contact from "./pages/Contact";
+import Auth from "./pages/Auth";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,6 +29,7 @@ const App = () => (
             <Route path="/purchase-permit" element={<PurchasePermit />} />
             <Route path="/admin" element={<AdminDashboard />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/auth" element={<Auth />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>

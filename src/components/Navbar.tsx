@@ -1,6 +1,6 @@
 
 import { Link, useLocation } from "react-router-dom";
-import { Car, Menu, X } from "lucide-react";
+import { Car, Menu, X, User } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
@@ -12,8 +12,6 @@ const Navbar = () => {
     { name: "Home", path: "/" },
     { name: "Parking Status", path: "/parking-status" },
     { name: "Purchase Permit", path: "/purchase-permit" },
-    { name: "Admin", path: "/admin" },
-    { name: "Contact", path: "/contact" },
   ];
 
   const isActivePage = (path: string) => location.pathname === path;
@@ -47,6 +45,16 @@ const Navbar = () => {
             ))}
           </div>
 
+          {/* Login/Register Button */}
+          <div className="hidden md:flex items-center">
+            <Button asChild variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50">
+              <Link to="/auth" className="flex items-center">
+                <User className="h-4 w-4 mr-2" />
+                Login / Register
+              </Link>
+            </Button>
+          </div>
+
           {/* Mobile menu button */}
           <Button
             variant="ghost"
@@ -76,6 +84,14 @@ const Navbar = () => {
                   {item.name}
                 </Link>
               ))}
+              <Link
+                to="/auth"
+                className="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 flex items-center"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <User className="h-4 w-4 mr-2" />
+                Login / Register
+              </Link>
             </div>
           </div>
         )}

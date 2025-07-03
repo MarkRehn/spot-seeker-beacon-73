@@ -1,5 +1,5 @@
 
-import { Car, Shield, Smartphone, Clock, CheckCircle, ArrowRight } from "lucide-react";
+import { Car, Shield, Smartphone, Clock, CheckCircle, ArrowRight, Mail, Phone, HelpCircle, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Link } from "react-router-dom";
@@ -35,6 +35,25 @@ const Index = () => {
     "Enhanced security with automated monitoring",
     "Seamless permit purchase and management",
     "Real-time availability across all garage levels"
+  ];
+
+  const faqItems = [
+    {
+      question: "How do I register my vehicle in the system?",
+      answer: "You can register your vehicle when purchasing a permit through our website. Enter your license plate number and vehicle details during checkout."
+    },
+    {
+      question: "What happens if I can't find a parking spot?",
+      answer: "Our real-time system shows available spots across all levels. If all spots are full, the system will notify you and suggest alternative nearby garages."
+    },
+    {
+      question: "How does the license plate recognition work?",
+      answer: "Our LPR cameras automatically scan and verify your license plate against our permit database when you enter and exit the garage."
+    },
+    {
+      question: "Can I transfer my parking permit to another vehicle?",
+      answer: "Monthly and semester permits include transfer privileges. Contact support to update your vehicle information."
+    }
   ];
 
   return (
@@ -125,6 +144,86 @@ const Index = () => {
         </div>
       </section>
 
+      {/* FAQ Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <HelpCircle className="h-12 w-12 text-blue-600 mx-auto mb-4" />
+            <h2 className="text-3xl font-bold text-slate-900 mb-4">Frequently Asked Questions</h2>
+            <p className="text-lg text-slate-600">Find answers to common questions about SmartPark</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {faqItems.map((faq, index) => (
+              <Card key={index} className="border-0 shadow-sm hover:shadow-md transition-shadow">
+                <CardHeader>
+                  <CardTitle className="text-lg">{faq.question}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-slate-600">{faq.answer}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact & Support Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-slate-900 mb-4">Need Help?</h2>
+            <p className="text-lg text-slate-600">Our support team is here to assist you</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Contact Card */}
+            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
+              <CardHeader className="text-center">
+                <Mail className="h-12 w-12 text-blue-600 mx-auto mb-4" />
+                <CardTitle>Contact Us</CardTitle>
+                <CardDescription>Get in touch with our team</CardDescription>
+              </CardHeader>
+              <CardContent className="text-center space-y-4">
+                <div>
+                  <p className="font-semibold text-slate-900">Email Support</p>
+                  <p className="text-slate-600">support@smartpark.com</p>
+                </div>
+                <div>
+                  <p className="font-semibold text-slate-900">Phone Support</p>
+                  <p className="text-slate-600">+1 (555) 123-4567</p>
+                </div>
+                <Button asChild className="w-full">
+                  <Link to="/contact">Contact Support</Link>
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Support Card */}
+            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
+              <CardHeader className="text-center">
+                <MessageSquare className="h-12 w-12 text-green-600 mx-auto mb-4" />
+                <CardTitle>Support Center</CardTitle>
+                <CardDescription>Find help and resources</CardDescription>
+              </CardHeader>
+              <CardContent className="text-center space-y-4">
+                <div>
+                  <p className="font-semibold text-slate-900">24/7 Support</p>
+                  <p className="text-slate-600">We're here to help anytime</p>
+                </div>
+                <div>
+                  <p className="font-semibold text-slate-900">Emergency Line</p>
+                  <p className="text-slate-600">+1 (555) 999-HELP</p>
+                </div>
+                <Button asChild variant="outline" className="w-full">
+                  <Link to="/contact">Visit Support Center</Link>
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-blue-600">
         <div className="max-w-4xl mx-auto text-center">
@@ -139,7 +238,7 @@ const Index = () => {
               <Link to="/parking-status">View Live Availability</Link>
             </Button>
             <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600">
-              <Link to="/contact">Contact Support</Link>
+              <Link to="/auth">Sign Up Today</Link>
             </Button>
           </div>
         </div>
